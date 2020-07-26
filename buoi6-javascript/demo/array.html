@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Lam quen voi Array</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var array = ["Nguyen Van Long", "Pham Minh Duc", 192, "{'name', 'Nguyen Van Long'}"];
+
+    var arrayByObject = new Array("Nguyen Van Long", "Pham Minh Duc");
+
+    document.write(array.toString() + "</br>");
+    document.write("==================In Array Vi Tri Bat ky=========================== </br>");
+
+    document.write(array[0] + "</br>");
+    document.write(array[1] + "</br>");
+    document.write(array[2] + "</br>");
+
+    document.write("==================Thay doi gia tri trong array=========================== </br>");
+    array[0] = "Nguyen Quoc Vuong";
+
+    document.write(array[0] + "</br>");
+    document.write(array[1] + "</br>");
+    document.write(array[2] + "</br>");
+
+    document.write("==================In array cach nhau bang dau -=========================== </br>");
+    document.write(array.join("-") + "</br>");
+
+    document.write("==================Them phan tu vao array=========================== </br>");
+    array.push("Nguyen Thi Ngoc Anh");
+    document.write(array + "</br>");
+
+    document.write("=================Gop 2 array============================ </br>");
+    var concatAray = array.concat(arrayByObject);
+    document.write(concatAray + "</br>");
+
+    document.write("=================In do dai cua array============================ </br>");
+    document.write(concatAray.length + "</br>");
+
+    document.write("=================Ham foreach============================ </br>");
+    for (var i = 0; i< concatAray.length; i++) {
+        document.write(concatAray[i] + "</br>");
+    }
+    
+    document.write("============================================= </br>");
+    concatAray.forEach(function(item, index) {
+        document.write(index + ": " + item + "</br>");
+    });
+
+    document.write("=================Mang 2 chieu============================ </br>");
+    var mang2Chieu = [];
+    mang2Chieu.push(new Array(1, 2, 3, 4, 5));
+    mang2Chieu.push(new Array("A", "B", "C", "D", "E"));
+    document.write(mang2Chieu[1][1]);
+
+    // function myFunction(callBackFunction) {
+    //     alert("MyFunction");
+    //     callBackFunction();
+    // }
+
+    // var callBackFunction = function() {
+    //     alert("callBackFunction");
+    // };
+    // myFunction(callBackFunction);
+</script>
+</html>

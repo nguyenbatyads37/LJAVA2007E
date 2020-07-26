@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Sap xep mang
+    var soNguyenDuong = [3, 29, 23, 24, 9, 63, 88, 2, 4];
+
+    for(var i = 0; i < soNguyenDuong.length; i++) {
+        for (var j = i + 1; j < soNguyenDuong.length; j++) {
+            if (soNguyenDuong[i] < soNguyenDuong[j]) {
+                //Hoan vi
+                var bienTam = soNguyenDuong[i];
+                soNguyenDuong[i] = soNguyenDuong[j];
+                soNguyenDuong[j] = bienTam;
+            }
+        }
+    }
+
+    document.write(soNguyenDuong);
+</script>
+</html>

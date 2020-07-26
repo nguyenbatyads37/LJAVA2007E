@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Tim gia tri lon nhat, nho nhat trong mang
+    var soNguyenDuong = [3, 29, 23, "24", 9, 63, "88", 2, 4];
+    var soLonNhat = soNguyenDuong[0];
+    var soNhoNhat = soNguyenDuong[0];
+
+    soNguyenDuong.forEach(function(item, index) {
+        if (+item > soLonNhat) {
+            soLonNhat = +item;
+        }
+
+        if (+item < soNhoNhat) {
+            soNhoNhat = +item;
+        }
+    });
+
+    document.write("So lon nhat: " + soLonNhat + "</br>");
+    document.write("So nho nhat: " + soNhoNhat);
+</script>
+</html>
