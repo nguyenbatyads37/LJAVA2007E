@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Bai 8 - buoi 2</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var data = '{"items":[{"id":"0001","type":"Cake","name":"donut","price":"0.55","batters":{"batter":[{"id":"1001","type":"Regular"},{"id":"1002","type":"Chocolate"}]},"topping":[{"id":"5001","type":"None"},{"id":"5002","type":"Glazed"},{"id":"5003","type":"Maple"}]}]}';
+
+    var objectJson = JSON.parse(data);
+    var item = objectJson.items[0]; document.write("</br>");
+    document.write("id: " + item.id); document.write("</br>");
+    document.write("type: " + item.type); document.write("</br>");
+    document.write("name: " + item.name); document.write("</br>");
+    document.write("price: " + item.price); document.write("</br>");
+    
+    var batters = item.batters.batter;
+    for (var i = 0; i < batters.length; i++) {
+        var batterItem = batters[i];
+        document.write("batterId: " + batterItem.id);document.write("</br>");
+        document.write("batterType: " + batterItem.type);document.write("</br>");
+    }
+
+    var topping = item.topping;
+    for (var i = 0; i < topping.length; i++) {
+        var toppingItem = topping[i];
+        document.write("toppingId: " + toppingItem.id);document.write("</br>");
+        document.write("toppingType: " + toppingItem.type);document.write("</br>");
+    }
+</script>
+</html>

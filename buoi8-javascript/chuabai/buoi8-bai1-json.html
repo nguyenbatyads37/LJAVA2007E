@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Buoi 8 - bai 1</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var dataStr = '{' +
+        '"id":"0001",' +
+        '"type":"Cake",' +
+        '"name":"Donut",' +
+        '"image":{' +
+        '"color":"brown",' +
+        '"shape":"square",' +
+        '"description":"good to taste"' +
+        '}' +
+        '}';
+
+    var dataObject = JSON.parse(dataStr);
+    document.write(dataObject.id);
+    document.write("</br>");
+    document.write(dataObject.type);
+    document.write("</br>");
+    document.write(dataObject.name);
+    document.write("</br>");
+    document.write(dataObject.image.color);
+    document.write("</br>");
+    document.write(dataObject.image.shape);
+    document.write("</br>");
+    document.write(dataObject.image.description);
+</script>
+
+</html>
