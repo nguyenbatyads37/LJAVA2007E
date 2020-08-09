@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <table>
+          <tr>
+            <td colspan="4">
+              <input type="text" name="display" id="displayText">
+            </td>
+          </tr>
+          <tr>
+            <td id="mot"><input type="button" name="one" value="1" onclick="handleButton(this)"></td>
+            <td id="hai"><input type="button" name="two" value="2" onclick="handleButton(this)"></td>
+            <td id="ba"><input type="button" name="three" value="3" onclick="handleButton(this)"></td>
+            <td id="cong"><input type="button" class="operator" name="plus" value="+" onclick="handleButton(this)"></td>
+          </tr>
+          <tr>
+            <td id="bon"><input type="button" name="four" value="4" onclick="handleButton(this)"></td>
+            <td id="nam"><input type="button" name="five" value="5" onclick="handleButton(this)"></td>
+            <td id="sau"><input type="button" name="six" value="6" onclick="handleButton(this)"></td>
+            <td id="tru"><input type="button" class="operator" name="minus" value="-" onclick="handleButton(this)"></td>
+          </tr>
+          <tr>
+            <td id="bay"><input type="button" name="seven" value="7" onclick="handleButton(this)"></td>
+            <td id="tam"><input type="button" name="eight" value="8" onclick="handleButton(this)"></td>
+            <td id="chin"><input type="button" name="nine" value="9" onclick="handleButton(this)"></td>
+            <td id="nhan"><input type="button" class="operator" name="times" value="*" onclick="handleButton(this)"></td>
+          </tr>
+          <tr>
+            <td id="xoa"><input type="button" class="operator" id="clear" name="clear" value="C" onclick="clearTxt()"></td>
+            <td id="khong"><input type="button" class="operator" name="zero" value="0" onclick="handleButton(this)"></td>
+            <td id="bang"><input type="button" class="operator" name="doit" value="=" onclick="calculate()"></td>
+            <td id="chia"><input type="button" class="operator" name="div" value="/" onclick="handleButton(this)"></td>
+          </tr>
+        </table>
+</body>
+
+<script>
+
+    var text = "";
+
+    function handleButton(input) {
+        text += input.value;
+        document.getElementById("displayText").value = text;
+    }
+
+    function calculate() {
+        document.getElementById("displayText").value = eval(text);
+    }
+
+    function clearTxt() {
+        text = "";
+        document.getElementById("displayText").value = "";
+    }
+</script>
+</html>
