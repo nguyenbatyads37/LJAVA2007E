@@ -3,13 +3,69 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Auto suggestion with jquery</title>
+    <title>Auto suggestion</title>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 </head>
 <body>
-    <input id="keySearch"/>
-    <div id="suggestContainer">
-        
-    </div>
+    <input type="text" id="keySearch"/>
+    <ul id="tags">
+    </ul>
 </body>
+
+<script>
+    $(document).ready(function() {
+
+        var data = [
+            "a plane", "a bird", "big foot", "big smile",
+            "cross", "dance", "doctor", "depend"
+        ];
+
+        $("#keySearch").on("keyup", function(){
+            var key = $(this).val();
+
+            var dataSuggestion = [];
+
+            data.forEach(item => {
+                if (key.charAt(0) == item.charAt(0)) {
+                    dataSuggestion.push(item);
+                }
+            });
+
+            $("#tags").empty();
+            dataSuggestion.forEach(item => {
+                $("#tags").append("<li onclick=refreshClickOnLi(this)>" + item + "</li>");
+            });
+
+            if (dataSuggestion.length > 0) {
+                $("#tags").show();
+            } else {
+                $("#tags").hide();
+            }
+        });
+    });
+
+    function refreshClickOnLi(input) {
+        $("#tags li").click(function(){
+            $("#keySearch").val($(input).text());
+        });
+    }
+</script>
+
+<style>
+    #tags {
+        border: solid 1px black;
+        width: 150px;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        display: none;
+    }
+    #tags li {
+        list-style-type: none;
+    }
+    #tags li:hover {
+        cursor: pointer;
+        background-color: burlywood;
+    }
+</style>
 </html>
