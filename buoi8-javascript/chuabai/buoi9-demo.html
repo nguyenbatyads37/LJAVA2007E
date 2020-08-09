@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Demo Jquery</title>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+</head>
+<body>
+    <span>Demo selector</span>
+    <p>This is the P</p>
+    <p>This is the P</p>
+    <h3 id="h3">The h3 so 1</h3> <!-- so1 -->
+    <h2 class="h2"></h2>
+    <h2 class="h2"></h2>
+    <h3 id="h3">The h3 so 2</h3> <!-- so2 trung id se khong bi thay doi gia tri -->
+    
+    <hr/>
+    <span>Demo click</span>
+    <button id="btnClick">Click me to show message</button>
+
+    <hr/>
+    <span>Demo hover</span>
+    <h1 id="h1Hover" style="display: inline;">Hover here to show message</h1>
+
+    <hr/>
+    <span>Demo forcus</span>
+    <input type="text" style="display: block;" id="inputFocus"/>
+
+    <hr/>
+    <span>Demo click voi ham on()</span>
+    <button id="onClick"> Click me to show message</button>
+
+    <hr/>
+    <span>Demo hide va show</span>
+    <h1 id="hideOnClick">Click me to hide me</h1>
+    <button id="showHidden">Show the hidden</button>
+
+    <hr/>
+    <span>Demo fadeIn, fadeToggle</span>
+    <h1 id="fadeIn" style="display: none;">Fade in h1</h1>
+    <button id="fadeToggle">Click me to show/hide the fade in h1</button>
+
+    <hr/>
+    <span>Demo slide up va slide down</span>
+    <h1 id="slideUpDown">This is slide up and down h1</h1>
+
+    <hr/>
+    <span>Demo animation bang jquery</span>
+    <div id="animate" style="width: 200px; height: 200px; background-color: blueviolet;"></div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("p").text("Thay doi noi dung the p");
+        $("#h3").text("Day la the h3");
+        $(".h2").text("Day la the h2");
+
+        $("#btnClick").click(function(){
+            alert("Ban vua click vao click button");
+        });
+
+        $("#h1Hover").hover(function(){
+            alert("Ban vua di chuyen chuot qua the h1");
+        });
+
+        $("#inputFocus").focus();
+
+        $("#onClick").on("click", function(){
+            alert("Thong bao bang ham on() trong jquery");
+        });
+
+        $("#hideOnClick").on("click", function(){
+            $(this).hide(2000, function(){
+                alert("Element has been hidden");
+            }); // document.css("display", "none");
+        });
+
+        $("#showHidden").on("click", function(){
+            $("#hideOnClick").show();
+        });
+
+        $("#fadeIn").fadeIn(5000);
+
+        $("#fadeToggle").on("click", function(){
+            $("#fadeIn").fadeToggle(4000);
+        });
+
+        $("#slideUpDown").slideUp(3000);
+        $("#slideUpDown").slideDown(3000);
+
+        $("#animate").animate({
+            marginLeft: "500px"
+        }, 3000);
+
+        $("#inputFocus").val("Gia tri");
+    });
+</script>
+</html>
