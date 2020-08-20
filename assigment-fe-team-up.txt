@@ -1,0 +1,6 @@
+Nhom 1: Lan, Hien, Anh. Leader: Hien - Web ban hang dien thoai
+Nhom 2: Tuan Anh, Hoa, Chinh. Leader: Hoa - Web ban quan ao thoi trang
+Nhom 3: Dung, Son , Duc Phung. Leader: Dung - Website tin tuc the thao
+Nhom 4: Binh, Giang. Leader: Giang - Website hoc tieng anh
+Nhom 5: Anh Duc, Cuong. Leader: Anh Duc - Website ban quan ao
+Nhom 6: Anh, Vinh. Leader: Anh - Website ban cafe
