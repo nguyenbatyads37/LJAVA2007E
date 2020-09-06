@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Buoi 10 - bai 3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    td,
+    th {
+        padding: 10px;
+        border-bottom: 2px solid #8ebf42;
+        text-align: center;
+    }
+
+    .top,
+    .middle,
+    .bottom {
+        width: 80%;
+        margin: auto;
+    }
+
+    #searchInput,
+    #searchBtn {
+        float: right;
+    }
+
+    span {
+        margin-left: 10px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <span>Show</span>
+            <select id="showSelect">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+            <button id="searchBtn">Search</button>
+            <input type="text" id="searchInput"/>
+        </div>
+        <div class="middle">
+            <table id="datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="bottom">
+        </div>
+    </div>
+</body>
+
+<script>
+    var numberOnePage = 5;
+
+    var data = [
+        { name: "name", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name1", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name2", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name3", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name4", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name5", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name6", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name7", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name8", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name9", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name10", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" },
+        { name: "name11", position: "prosition", office: "office", age: "30", salary: "1000" }
+    ];
+
+    pagination(data);
+
+    function appendToTable(dataObject) {
+        $("#datatable tbody").append(
+            "<tr>" +
+            "<td>" + dataObject.name + "</td>" +
+            "<td>" + dataObject.position + "</td>" +
+            "<td>" + dataObject.office + "</td>" +
+            "<td>" + dataObject.age + "</td>" +
+            "<td>" + dataObject.salary + "</td>" +
+            "</tr>"
+        )
+    }
+
+    function drawPagination(inputData) {
+        length = inputData.length;
+        var surplus = length % numberOnePage;
+        var divine = length / numberOnePage;
+        var totalPage = 0;
+        if (surplus == 0) {
+            totalPage = divine;
+        } else {
+            totalPage = divine + 1;
+        }
+
+        for (var i = 1; i <= totalPage; i++) {
+            $(".bottom").append("<span><a href='#'>" + i + "</a></span>");
+        }
+
+        $("span").click(function () {
+            $("#datatable tbody").empty();
+            var maxRecord = numberOnePage * +$(this).text();
+            for (var i = (maxRecord - numberOnePage); i < maxRecord; i++) {
+                if (inputData[i] != undefined) {
+                    appendToTable(inputData[i]);
+                }
+            }
+        });
+    }
+
+    function pagination(inputData) {
+        $("#datatable tbody").empty();
+        $(".bottom").empty();
+        var length = inputData.length;
+        if (length > numberOnePage) {
+            for (var i = 0; i < numberOnePage; i++) {
+                appendToTable(inputData[i]);
+            }
+            drawPagination(inputData);
+        } else {
+            inputData.forEach(item => {
+                appendToTable(item);
+            });
+        }
+    }
+
+    $("#showSelect").change(function () {
+        numberOnePage = +$(this).val();
+        pagination(data);
+    });
+
+    $("#searchBtn").click(function(){
+        var key = $("#searchInput").val();
+        var searchData = data.filter(function(item){
+            return item.name.indexOf(key) >= 0;
+        })
+        pagination(searchData);
+    });
+
+</script>
+
+</html>
