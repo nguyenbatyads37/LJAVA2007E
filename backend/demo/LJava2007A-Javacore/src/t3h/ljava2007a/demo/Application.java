@@ -22,6 +22,8 @@ public class Application {
 	}
 	
 	public static void main(String[] args) {
+		String b = new String("abc");
+		
 		Application application = new Application();
 		application.printAge();
 		newName = "abc";
