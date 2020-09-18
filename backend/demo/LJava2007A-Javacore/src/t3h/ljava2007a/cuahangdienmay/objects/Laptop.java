@@ -2,6 +2,11 @@ package t3h.ljava2007a.cuahangdienmay.objects;
 
 // POJO class
 public class Laptop extends SanPham{
+	
+	public Laptop(String hangSanXuat) {
+		super(hangSanXuat);
+	}
+
 	private String chipXuLy;
 	private String chipDoHoa;
 	private String oCung;
