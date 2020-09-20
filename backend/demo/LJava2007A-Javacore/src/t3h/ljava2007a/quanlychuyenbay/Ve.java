@@ -17,4 +17,10 @@ public class Ve {
 	public void setLoaiVe(int loaiVe) {
 		this.loaiVe = loaiVe;
 	}
+	
+	public Ve(int giaVe, int loaiVe) {
+		super();
+		this.giaVe = giaVe;
+		this.loaiVe = loaiVe;
+	}
 }

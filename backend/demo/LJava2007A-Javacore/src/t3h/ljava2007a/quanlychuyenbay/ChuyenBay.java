@@ -7,11 +7,8 @@ public class ChuyenBay {
 	private int thoiGianBay;
 	private List<KhachHang> danhSachKhachHang;
 	
-	public int tinhTongTien() {
-		
-	}
-	
 	public void inThongTinKhach() {
+		int tongTien = 0;
 		for (int i = 0; i < this.danhSachKhachHang.size(); i++) {
 			KhachHang khachHang = danhSachKhachHang.get(i);
 			System.out.println("Khach hang: " + khachHang.getTen());
@@ -19,10 +16,24 @@ public class ChuyenBay {
 			System.out.println("Tuoi: " + khachHang.tuoi);
 			System.out.println("Thoi gian bay: " + this.thoiGianBay);
 			System.out.println("So luong ve khach mua: " + khachHang.getSoLuongVe());
-			System.out.println("Tien khach phai tra: " + khachHang.tinhTien(this));
+			int tienKhachTra = khachHang.tinhTien(this);
+			System.out.println("Tien khach phai tra: " + tienKhachTra);
+			tongTien += tienKhachTra;
 		}
+		System.out.println("Tong tien khach phai tra: " + tongTien);
 	}
 	
+	public void themKhachHang(KhachHang khachHang) {
+		this.danhSachKhachHang.add(khachHang);
+	}
+	
+	public ChuyenBay(String tenChuyenBay, int thoiGianBay, List<KhachHang> danhSachKhachHang) {
+		super();
+		this.tenChuyenBay = tenChuyenBay;
+		this.thoiGianBay = thoiGianBay;
+		this.danhSachKhachHang = danhSachKhachHang;
+	}
+
 	public String getTenChuyenBay() {
 		return tenChuyenBay;
 	}
