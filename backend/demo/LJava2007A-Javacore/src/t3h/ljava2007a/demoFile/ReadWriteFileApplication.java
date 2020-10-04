@@ -16,7 +16,7 @@ public class ReadWriteFileApplication {
 				e.printStackTrace();
 			}
 		}
-		
+
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(file);
@@ -27,14 +27,12 @@ public class ReadWriteFileApplication {
 		} finally {
 			fileWriter.close();
 		}
-		
-		
-		
+
 		FileReader fileReader = null;
 		try {
 			fileReader = new FileReader(file);
 			int i;
-			while((i = fileReader.read()) != -1) {
+			while ((i = fileReader.read()) != -1) {
 				System.out.print((char) i);
 			}
 		} catch (IOException e) {
