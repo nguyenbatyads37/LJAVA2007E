@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link rel="stylesheet" th:href="@{css/home.css}" />
+<script type="text/javascript" src="js/home.js"></script>
+</head>
+<body>
+	<h1>
+		Ten trang chu <span th:text="#{trangchu.name}"></span>
+	</h1>
+	<p class="welcome">Welcome home templates</p>
+	<h1 th:text="${hello}"></h1>
+
+	<hr />
+
+	<table border="1px">
+		<tr>
+			<td>Id</td>
+			<td>Name</td>
+		</tr>
+		<tr th:each="st : ${listStudent}">
+			<td th:text="${st.id}"></td>
+			<td th:text="${st.name}"></td>
+		</tr>
+	</table>
+
+	<h1>
+		Gioi tinh cua toi <span th:if="${gender} == 'F'">Female</span> <span
+			th:unless="${gender} == 'F'">Male</span>
+	</h1>
+	<form th:action="@{/submitStudent}" th:object="${student}" method="post">
+		<table border="1px">
+			<tr>
+				<td>Id</td>
+				<td><input type="text" th:field="*{id}" name="id" id="id" /></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" th:field="*{name}" name="name" id="name" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Tao moi"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
