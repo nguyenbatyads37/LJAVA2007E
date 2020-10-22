@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Edit student</title>
+</head>
+<body>
+	<h1>Edit Student</h1>
+	<form th:action="@{/editStudent}" method="post">
+		<table border="1px">
+			<tr>
+				<td>Id</td>
+				<td><input type="text" th:field="${student.id}" name="id"/></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" th:field="${student.name}" name="name"/></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
