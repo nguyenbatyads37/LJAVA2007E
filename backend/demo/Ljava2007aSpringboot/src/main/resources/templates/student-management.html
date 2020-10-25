@@ -17,7 +17,7 @@
 			<td th:text="${st.id}"></td>
 			<td th:text="${st.name}"></td>
 			<td>
-				<a th:href="@{/getEdit/}+${st.id}">Edit</a>
+				<button th:attr="onclick=|getStudentById('${st.id}')|">Edit</button>
 				<a th:href="@{/deleteStudent/}+${st.id}">Delete</a>
 			</td>
 		</tr>
@@ -40,5 +40,47 @@
 			</tr>
 		</table>
 	</form>
+	
+	<h1>Edit Student</h1>
+	<form th:action="@{/editStudent}" method="post">
+		<table border="1px">
+			<tr>
+				<td>Id</td>
+				<td><input type="text" name="id" id="studentId"/></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" id="studentName"/></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"/></td>
+			</tr>
+		</table>
+	</form>
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js">
+</script>
+<script type="text/javascript">
+	function getStudentById(id) {
+		
+		var student = {"id": id};
+		// Goi api thong qua ajax
+		$.ajax({
+			type: "POST",
+			url: "/getStudentById",
+			dataType: "json",
+			contentType: "application/json; chartset=UTF-8",
+			data: JSON.stringify(student),
+			success: function(data) {
+				console.log(data);
+				// Set student data cho edit form
+				$("#studentId").val(data.id);
+				$("#studentName").val(data.name);
+			},
+			error: function(err) {
+				alert("error: " + err);
+			}
+		});
+	}
+</script>
 </html>
