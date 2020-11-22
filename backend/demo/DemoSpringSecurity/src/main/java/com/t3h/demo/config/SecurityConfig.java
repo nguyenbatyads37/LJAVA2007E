@@ -14,30 +14,41 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import com.t3h.demo.filters.JwtUsernamePasswordFilter;
+import com.t3h.demo.filters.JwtVerificationFilter;
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
+		JwtUsernamePasswordFilter jwtFiler = new JwtUsernamePasswordFilter();
+		jwtFiler.setAuthenticationManager(authenticationManager());
+		
 		http
 			.csrf().disable()
+			.addFilter(jwtFiler)
+			.addFilterAfter(
+					new JwtVerificationFilter(), 
+					JwtUsernamePasswordFilter.class)
 			.authorizeRequests()
 			.antMatchers("/", "/js/**", "/css/**").permitAll()
 			.antMatchers("/api/student/**").hasAuthority("STUDENT")
 			.antMatchers("/api/admin/**").hasAuthority("ADMIN")
-				.anyRequest().authenticated()
-				.and()
-			.formLogin()
-			.loginPage("/login")
-			.permitAll()
-			.defaultSuccessUrl("/", true)
-			.and()
-			.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login")
-				.clearAuthentication(true)
-				.deleteCookies("SESSIONID", "remember-me")
-			;
+			.anyRequest().authenticated();
+//				.and()
+//			.formLogin()
+//			.loginPage("/login")
+//			.permitAll()
+//			.defaultSuccessUrl("/", true)
+//			.and()
+//			.logout()
+//				.logoutUrl("/logout")
+//				.logoutSuccessUrl("/login")
+//				.clearAuthentication(true)
+//				.deleteCookies("SESSIONID", "remember-me")
+//			;
 	}
 	
 	@Bean
